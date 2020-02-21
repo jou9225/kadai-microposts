@@ -46,6 +46,5 @@ class User < ApplicationRecord
   def like?(micropost)
     self.liked.include?(micropost)
   end
-  
 
 end

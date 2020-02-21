@@ -1,5 +1,6 @@
 <ul class="list-unstyled">
-  <% microposts.each do |micropost| %>
+  <h2>投稿したお気に入り数：<%= @count_favorites %></h2>
+  <% @microposts.each do |micropost| %>
     <li class="media mb-3">
       <img class="mr-2 rounded" src="<%= gravatar_url(micropost.user, { size: 50 }) %>" alt="">
       <div class="media-body">
@@ -9,16 +10,8 @@
         <div>
           <p class="mb-0"><%= micropost.content %></p>
         </div>
-        <div class="btn-toolbar">
-          <% if current_user == micropost.user %>
-            <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm ml-1' %>
-          <% end %>
-          <%= render 'favorites/like_button', micropost: micropost %>
-            
-        </div>
       </div>
     </li>
   <% end %>
-  
-  <%= paginate microposts %>
+  <%= paginate @microposts %>
 </ul>
